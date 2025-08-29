@@ -1,6 +1,8 @@
+
+// call history control 
 const call_history = [];
 
-for (let i = 1; i <= 10; i++) {
+for (let i = 1; i <= 9; i++) {
     let b = "call" + i;
     let w = "what" + i;
     let h = "how" + i;
@@ -9,7 +11,7 @@ for (let i = 1; i <= 10; i++) {
         let avlb_coin = parseInt(document.getElementById("available_coin").innerText);
 
         if (avlb_coin < 20) {
-            alert("You can't make a call due to low star");
+            alert("You can't make a call due to lower star");
             return;
         }
 
@@ -35,5 +37,36 @@ for (let i = 1; i <= 10; i++) {
             <div>${new Date().toLocaleTimeString()}</div>
         `
         document.getElementById('father').appendChild(child);
+        document.getElementById('clr').addEventListener('click',function(){
+           document.getElementById('father').innerText=[]; 
+        })
     });
 }
+
+// heart count control 
+
+for(let i=1;i<=9;i++){
+    let h="heart"+i;
+  document.getElementById(h).addEventListener('click',function(){
+    let available_heart=parseInt(document.getElementById('heart_count').innerText);
+    available_heart+=1;
+    document.getElementById('heart_count').innerText=available_heart;
+})  
+}
+
+// copy count control 
+
+for(let i=1;i<=9;i++){
+    let c="copy"+i;
+    let h="how"+i;
+  document.getElementById(c).addEventListener('click',function(){
+    let available_copy=parseInt(document.getElementById('copy_count').innerText);
+    available_copy+=1;
+    document.getElementById('copy_count').innerText=available_copy;
+
+    let expected_number=document.getElementById(h).innerText;
+    navigator.clipboard.writeText(expected_number);
+    alert('Text copied to clipboard!');
+})  
+}
+
